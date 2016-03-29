@@ -29,10 +29,10 @@ View for locking and unlocking.
 
 |     attr    	        |  default  	|                         mean                         	|
 |:--------------------:	|:------------:	|:----------------------------------------------------:	|
-|   cellRadius   	|     0     	|         The radius of the dot cell. If have set the cell radius the cell spacing will be ignored.            	|
+|   cellRadius   	|     0     	|         The radius of the dot cell.                   	|
 |   cellBaseCount 	|     3      	|         the base count of the cell          	            |
 |   cellColor       |   #FFFFFF 	|         Color of the cell dot.                     	    |
-|   cellSpacing 	|     32dp     	|         the spacing between two dot cells. It will be ignored if you have set the cell radius|
+|   cellSpacing 	|     32dp     	|         the spacing between two dot cells.                |
 |   showPath     	|     true     	|         whether is showing path or not when unlocking.    |
 
 ##### Exception
