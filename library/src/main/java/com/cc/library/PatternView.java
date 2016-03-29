@@ -324,12 +324,12 @@ public class PatternView extends View {
             if (!mFinishListener.onFinish(this, mSelectedCells, getPasswordAsString(mSelectedCells))) {
                 mIsError = true;
                 invalidate();
-                resetViewAfterDelay(600);
+                resetViewAfterDelay(1000);
             } else {
-                resetViewAfterDelay(400);
+                resetViewAfterDelay(1000);
             }
         } else {
-            resetViewAfterDelay(400);
+            resetViewAfterDelay(1000);
         }
     }
 

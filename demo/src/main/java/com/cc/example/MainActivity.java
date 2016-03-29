@@ -2,6 +2,7 @@ package com.cc.example;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         initSetupMode();
-        mPatternView.setIsShowPath(false);
+        //mPatternView.setIsShowPath(false);
     }
 
     private void initSetupMode() {
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         mPatternView.setOnFinishListener(new PatternView.OnFinishListener() {
             @Override
             public boolean onFinish(PatternView patternView, List<Integer> result, String resultAsString) {
-
+                Log.e("PatternView", "Result:" + resultAsString);
                 if (mIsPasswordSet) {
                     String password = resultAsString;
                     if (password.equals(mPassword)) {
@@ -90,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         mPatternView.setOnFinishListener(new PatternView.OnFinishListener() {
             @Override
             public boolean onFinish(PatternView patternView, List<Integer> result, String resultAsString) {
+                Log.e("PatternView", "Result:" + resultAsString);
                 if (resultAsString.equals(mPassword)) {
                     Toast.makeText(MainActivity.this, "Unlock successful", Toast.LENGTH_LONG).show();
                     mPatternView.postDelayed(new Runnable() {
