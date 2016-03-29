@@ -1,8 +1,15 @@
 # PatternLockView
-android pattern lock view
-## android-patternview
+a simple android pattern lock view widget.
 
 [![Join the chat at https://gitter.im/geftimov/android-patternview](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/geftimov/android-patternview?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--patternview-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1495) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.eftimoff/android-patternview/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.eftimoff/android-patternview)
+
+## Features
+* It is simple and easy to use
+* support n * n Pattern
+* support auto link between two nodes
+* support show the direction of the path
+* support hidden or show the path
+* Support `API LEVEL >= 8`
 
 View for locking and unlocking.
 
@@ -10,25 +17,24 @@ View for locking and unlocking.
 
 ##### How to use
 
-    <com.eftimoff.patternview.PatternView
+    <com.cc.library.PatternView
         xmlns:patternview="http://schemas.android.com/apk/res-auto"
         android:id="@+id/patternView"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        patternview:pathColor="@color/primary_dark_material_light"
-        patternview:circleColor="@color/highlighted_text_material_light"
-        patternview:dotColor="@color/highlighted_text_material_light"
-        patternview:gridRows="4"
-        patternview:gridColumns="4"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        custom:cellRadius="@dimen/pattern_cell_radius"
+        custom:cellBaseCount="3"
+        custom:cellColor="@color/white"/>
         
 ##### Attributes
 
-|     attr    	|  default  	|                         mean                         	|
-|:-----------:	|:---------:	|:----------------------------------------------------:	|
-|   maxSize   	|     0     	|         Maximum size if WRAP_CONTENT is used.        	|
-| circleColor 	| #FFFF0000 	|          Color of the selected cell circle.          	|
-| dotColor      | circleColor 	|          Color of the cell dot.                     	|
-|   gridRows 	|     3     	|         Rows of the grid. Example 4 for 4xcolums.         	|
+|     attr    	        |  default  	|                         mean                         	|
+|:--------------------:	|:------------:	|:----------------------------------------------------:	|
+|   cellRadius   	|     0     	|         The radius of the dot cell,If have set the cell radius the cell spacing will be ignored.            	|
+|   cellBaseCount 	|     3      	|         the base count of the cell          	|
+|   cellColor           |   #FFFFFF 	|          Color of the cell dot.                     	|
+|   cellSpacing 	|     3     	|         Rows of the grid. Example 4 for 4xcolums.         	|
 |   gridColumns  	|     3     	|         Columns of the grid. Example 4 for rowsx4.         	|
 |  pathColor  	| #FFFFFF       | The color of the path that is following the pointer. 	|
 
@@ -46,33 +52,9 @@ View for locking and unlocking.
 I want to update this library and make it better. So any help will be appreciated.
 Make and pull - request and we can discuss it.
 
-##### Download
-
-	dependencies {
-		compile 'com.eftimoff:android-patternview:1.0.5@aar'
-	}
-
-##### Changelog
-
-<b>1.0.5</b>
-
-	[Feature] Not only fixed size now. Can set different column and row size.
-
-<b>1.0.4</b>
-
-	[Feature] Added dotColor to be able to change only the color of the dots.
-	
-<b>1.0.3</b>
-
-	[Fix] Fix a bug with crashing on orientation change.
-
-<b>1.0.2</b>
-
-	[Feature] Support for API 9
-
 ## Licence
 
-    Copyright 2015 Georgi Eftimov
+    Copyright 2015 iChengc
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
