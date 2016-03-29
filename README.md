@@ -5,8 +5,8 @@ a simple android pattern lock view widget.
 * It is simple and easy to use
 * support n * n Pattern
 * support auto link between two nodes
-* support show the direction of the path
-* support hidden or show the path
+* support showing the direction of the path
+* support hidden or showing the path
 * Support `API LEVEL >= 8`
 
 View for locking and unlocking.
