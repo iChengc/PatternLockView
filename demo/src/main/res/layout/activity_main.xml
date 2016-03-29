@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.cc.example"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/home"
+    tools:context="com.cc.example.MainActivity">
+
+    <TextView
+        android:id="@+id/pattern_tips"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Hello World!"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <com.cc.library.PatternView
+        android:id="@+id/patternView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/divider"
+        android:layout_below="@+id/pattern_tips"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        custom:cellRadius="@dimen/pattern_cell_radius" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/mode_select_container"
+        android:background="@android:color/white" />
+
+    <RelativeLayout
+        android:id="@+id/mode_select_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/mode_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="Mode selector"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/mode_setup_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/mode_tips"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="Setup"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/authentic_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/mode_tips"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Authentic"
+            android:textSize="14sp" />
+    </RelativeLayout>
+</RelativeLayout>
