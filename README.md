@@ -16,7 +16,7 @@ View for locking and unlocking.
 ##### How to use
 
     <com.cc.library.PatternView
-        xmlns:patternview="http://schemas.android.com/apk/res-auto"
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
         android:id="@+id/patternView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
