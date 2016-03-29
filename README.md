@@ -1,8 +1,6 @@
 # PatternLockView
 a simple android pattern lock view widget.
 
-[![Join the chat at https://gitter.im/geftimov/android-patternview](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/geftimov/android-patternview?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-android--patternview-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1495) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.eftimoff/android-patternview/badge.svg?style=flat)](https://maven-badges.herokuapp.com/maven-central/com.eftimoff/android-patternview)
-
 ## Features
 * It is simple and easy to use
 * support n * n Pattern
@@ -31,26 +29,33 @@ View for locking and unlocking.
 
 |     attr    	        |  default  	|                         mean                         	|
 |:--------------------:	|:------------:	|:----------------------------------------------------:	|
-|   cellRadius   	|     0     	|         The radius of the dot cell,If have set the cell radius the cell spacing will be ignored.            	|
-|   cellBaseCount 	|     3      	|         the base count of the cell          	|
-|   cellColor           |   #FFFFFF 	|          Color of the cell dot.                     	|
-|   cellSpacing 	|     3     	|         Rows of the grid. Example 4 for 4xcolums.         	|
-|   gridColumns  	|     3     	|         Columns of the grid. Example 4 for rowsx4.         	|
-|  pathColor  	| #FFFFFF       | The color of the path that is following the pointer. 	|
+|   cellRadius   	|     0     	|         The radius of the dot cell. If have set the cell radius the cell spacing will be ignored.            	|
+|   cellBaseCount 	|     3      	|         the base count of the cell          	            |
+|   cellColor       |   #FFFFFF 	|         Color of the cell dot.                     	    |
+|   cellSpacing 	|     32dp     	|         the spacing between two dot cells. It will be ignored if you have set the cell radius|
+|   showPath     	|     true     	|         whether is showing path or not when unlocking.    |
 
-##### Limitations
+##### Exception
 
-1. Padding for the view does not work.
+It will throw no enough space exception, if the value of cell radius or spacing is too large.
 
-#### TODO
+## Handle result
+* **Handle pattern password result:**
+handle pattern password result when user complete draw the pattern
+```java
+mPatternView.setOnFinishListener(new PatternView.OnFinishListener() {
+            @Override
+            public boolean onFinish(PatternView patternView, List<Integer> result, String resultAsString) {
 
-1. See the padding , and why it is not applied.
-2. Make wiki for all the settings.
-
-#### Contributors
-
-I want to update this library and make it better. So any help will be appreciated.
-Make and pull - request and we can discuss it.
+                    if (resultAsString.equals(mPassword)) {
+                        Toast.makeText(MainActivity.this, "Password is correct.", Toast.LENGTH_LONG).show();
+                        return true;
+                    }
+                    Toast.makeText(MainActivity.this, "Try again", Toast.LENGTH_LONG).show();
+                    return false;
+            }
+        });
+```
 
 ## Licence
 
