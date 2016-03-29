@@ -257,11 +257,11 @@ public class PatternView extends View {
             if (i < mSelectedCells.size() - 1) {
                 calcPositionOfCell(mSelectedCells.get(i + 1), mNextPoint);
                 angle = getAngle(mSelectedCells.get(i + 1));
-                if (mIsShowPath) {
+                if (mIsShowPath || mIsSetup) {
                     canvas.drawLine(mLastPoint.x, mLastPoint.y, mNextPoint.x, mNextPoint.y, mPaint);
                 }
             } else {
-                if (mTouchPoint != null && mIsShowPath) {
+                if (mTouchPoint != null && (mIsShowPath || mIsSetup)) {
                     canvas.drawLine(mLastPoint.x, mLastPoint.y, mTouchPoint.x, mTouchPoint.y, mPaint);
                 }
             }

@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         initSetupMode();
+        mPatternView.setIsShowPath(false);
     }
 
     private void initSetupMode() {

@@ -24,7 +24,7 @@
         android:layout_below="@+id/pattern_tips"
         android:layout_marginTop="20dp"
         android:padding="20dp"
-        custom:cellRadius="@dimen/pattern_cell_radius" />
+        custom:cellSpacing="20dp" />
 
     <View
         android:id="@+id/divider"
