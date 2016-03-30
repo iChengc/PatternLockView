@@ -229,18 +229,24 @@ public class PatternView extends View {
 
         final int size = Math.min(getMeasuredHeight(), getMeasuredWidth());
         if (mCellRadius == -1) {
-
-            mCenterOffset = size == getMeasuredHeight() ? ((getMeasuredWidth() - getMeasuredHeight()) >> 1) : 0;
             int remainSpace = size - (mPadding << 1) - mSpacing * (mCellBaseCount - 1);
+            if (remainSpace <= 0) {
+                throw new RuntimeException("No enough space for drawing the cells");
+            }
             mCellRadius = remainSpace / (mCellBaseCount << 1);
+            mCenterOffset = size == getMeasuredHeight() ? ((getMeasuredWidth() - getMeasuredHeight()) >> 1) : 0;
         } else {
             final int cellsUsedSpace = (mCellRadius << 1) * mCellBaseCount;
             if (cellsUsedSpace > size - (mPadding << 1)) {
                 throw new RuntimeException("No enough space for drawing the cells");
             }
 
-            mCenterOffset = 0;
-            mSpacing = (size - (mPadding << 1) - cellsUsedSpace) / (mCellBaseCount - 1);
+            final int remainSpacing = size - cellsUsedSpace - (mPadding << 1);
+            if (remainSpacing - mSpacing * (mCellBaseCount - 1) < 0) {
+                mSpacing = remainSpacing / (mCellBaseCount - 1);
+            }
+
+            mCenterOffset = ((getMeasuredWidth()  - cellsUsedSpace - mSpacing * (mCellBaseCount - 1)) >> 1) - mPadding;
         }
         mCellDrawable.init();
     }
@@ -489,10 +495,17 @@ public class PatternView extends View {
         static final double ANGEL_NONE = Double.MAX_VALUE;
 
         private float mPositionX, mPositionY;
-        private double mAngle = ANGEL_NONE;
+        private double mAngle;
         private boolean mIsSelected;
 
         private int mInnerCircleRadius;
+
+        private Path mTrianglePath;
+
+        public CellDrawable() {
+            mTrianglePath = new Path();
+            mAngle = ANGEL_NONE;
+        }
 
         void init() {
             mInnerCircleRadius = mCellRadius / 3;
@@ -539,7 +552,7 @@ public class PatternView extends View {
             final double bottomVertexAngle = Math.atan(triangleHeight / Math.sqrt(3) / (distanceTopVertex - triangleHeight));
             final double distanceBottomVertex = Math.sqrt(Math.pow(triangleHeight, 2) / 3 + Math.pow(distanceTopVertex - triangleHeight, 2));
 
-            Path path = new Path();
+
             final float vertexX = mPositionX + distanceTopVertex * (float) Math.cos(mAngle);
             final float vertexY = mPositionY + distanceTopVertex * (float) Math.sin(mAngle);
             final float vertexX1 = mPositionX + (float) (distanceBottomVertex * Math.cos(mAngle + bottomVertexAngle));
@@ -547,11 +560,12 @@ public class PatternView extends View {
             final float vertexX2 = mPositionX + (float) (distanceBottomVertex * Math.cos(mAngle - bottomVertexAngle));
             final float vertexY2 = mPositionY + (float) (distanceBottomVertex * Math.sin(mAngle - bottomVertexAngle));
 
-            path.moveTo(vertexX, vertexY);
-            path.lineTo(vertexX1, vertexY1);
-            path.lineTo(vertexX2, vertexY2);
-            path.close();
-            canvas.drawPath(path, mPaint);
+            mTrianglePath.reset();
+            mTrianglePath.moveTo(vertexX, vertexY);
+            mTrianglePath.lineTo(vertexX1, vertexY1);
+            mTrianglePath.lineTo(vertexX2, vertexY2);
+            mTrianglePath.close();
+            canvas.drawPath(mTrianglePath, mPaint);
         }
 
         @Override

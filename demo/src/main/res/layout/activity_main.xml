@@ -22,9 +22,9 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/divider"
         android:layout_below="@+id/pattern_tips"
-        android:layout_marginTop="20dp"
         android:padding="20dp"
-        custom:cellRadius="@dimen/pattern_cell_radius" />
+        custom:cellRadius="@dimen/pattern_cell_radius"
+        custom:cellSpacing="@dimen/pattern_cell_radius"/>
 
     <View
         android:id="@+id/divider"

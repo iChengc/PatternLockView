@@ -24,7 +24,6 @@
         <attr name="cellBaseCount" format="integer" />
         <attr name="cellColor" format="color" />
         <attr name="cellSpacing" format="dimension" />
-        <!-- If have set the cell radius the cell spacing will be ignored -->
         <attr name="cellRadius" format="dimension" />
         <attr name="showPath" format="boolean" />
     </declare-styleable>
